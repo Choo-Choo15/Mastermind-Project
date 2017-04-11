@@ -24,8 +24,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    patterngenerator.cpp \
+    playerguess.cpp \
+    playerguessfeedback.cpp \
+    game.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    playerguess.h \
+    playerguessfeedback.h \
+    patterngenerator.h \
+    game.h
 
 FORMS    += mainwindow.ui
