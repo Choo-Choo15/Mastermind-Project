@@ -5,12 +5,13 @@ PatternGenerator::PatternGenerator()
 
 }
 
-PatternGenerator::getPattern()
+char PatternGenerator::getPattern()
+{
+    return 'a';
+}
+
+void PatternGenerator::setPattern()
 {
 
 }
 
-PatternGenerator::setPattern()
-{
-
-}

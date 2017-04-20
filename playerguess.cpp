@@ -5,17 +5,18 @@ PlayerGuess::PlayerGuess()
 
 }
 
-PlayerGuess::checkPattern()
+bool PlayerGuess::checkPattern()
+{
+    return false;
+}
+
+char PlayerGuess::getGuess()
+{
+    return 'a';
+}
+
+void PlayerGuess::setGuess()
 {
 
 }
 
-PlayerGuess::getGuess()
-{
-
-}
-
-PlayerGuess::setGuess()
-{
-
-}

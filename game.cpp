@@ -1,5 +1,5 @@
 #include "game.h"
-
+/*
 Game::Game()
 {
 
@@ -14,3 +14,4 @@ Game::gameOutCome()
 {
 
 }
+*/

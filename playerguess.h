@@ -10,7 +10,7 @@ private:
 public:
     PlayerGuess();
     PlayerGuessFeedBack FB;
-    char* getGuess();
+    char getGuess();//needs to be a pointer
     void setGuess();
     bool checkPattern();
 };

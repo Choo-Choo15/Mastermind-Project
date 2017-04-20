@@ -8,7 +8,7 @@ private:
     char pattern[5];
 public:
     PatternGenerator();
-    char* getPattern();
+    char getPattern();//needs a pointer
     void setPattern();
 };
 
