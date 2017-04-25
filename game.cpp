@@ -1,15 +1,15 @@
 #include "game.h"
-/*
+
 Game::Game()
 {
 
 }
 
-Game::runGame()
+void Game::runGame()
 {
 
 }
-
+/*
 Game::gameOutCome()
 {
 

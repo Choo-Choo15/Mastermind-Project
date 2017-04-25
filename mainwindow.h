@@ -30,6 +30,7 @@ private:
     void createActions();
     void createMenus();
 
+
     QMenu *fileMenu;
     QMenu *helpMenu;
     QAction *newGameAct;

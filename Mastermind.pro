@@ -28,12 +28,17 @@ SOURCES += main.cpp\
     patterngenerator.cpp \
     playerguess.cpp \
     playerguessfeedback.cpp \
-    game.cpp
+    game.cpp \
+    board.cpp \
+    circles.cpp
 
 HEADERS  += mainwindow.h \
     playerguess.h \
     playerguessfeedback.h \
     patterngenerator.h \
-    game.h
+    game.h \
+    board.h \
+    circles.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    board.ui
