@@ -1,12 +1,14 @@
 #ifndef CIRCLES_H
 #define CIRCLES_H
+
 #include <QPainter>
 #include <QWidget>
 
 class Circles : public QWidget
 {
-private:
     Q_OBJECT
+
+private:
     int row, col;
     bool empty;
     char color;
@@ -15,12 +17,16 @@ private:
 protected:
     void paintEvent(QPaintEvent *);
 
-public:
-   explicit Circles(QWidget *pParent = 0);
-   char getColor();
-   void setColor(char Color);
-   //~Circles();
 
+public:
+    explicit Circles(QWidget *parent = 0);
+    char getColor();
+    void setColor(char Color);
+    //~Circles();
+
+signals:
+
+public slots:
 };
 
-#endif // SPACES_H
+#endif // CIRCLES_H

@@ -1,6 +1,8 @@
 #include "circles.h"
+
 #include <QPainter>
 #include <QWidget>
+#include <QGraphicsObject>
 
 Circles::Circles(QWidget *pParent) : QWidget(pParent)
 {

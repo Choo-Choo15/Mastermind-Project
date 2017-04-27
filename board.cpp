@@ -1,10 +1,19 @@
 #include "board.h"
 #include "ui_board.h"
-#include <QtGui>
 
-board::board(QWidget *parent) : QWidget(parent), ui(new Ui::board)
+#include <QtWidgets>
+
+board::board(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::board)
 {
     ui->setupUi(this);
+
+    connect(ui->actionNew_Game,SIGNAL(triggered()),this,SLOT(new_game()));
+    connect(ui->actionExit,SIGNAL(triggered()),this,SLOT(exit()));
+    connect(ui->actionInstructions,SIGNAL(triggered()),this,SLOT(open_Instructions()));
+    connect(ui->actionAbout,SIGNAL(triggered()),this,SLOT(about()));
+    connect(ui->actionAbout_Qt,SIGNAL(triggered()),this,SLOT(aboutQt()));
 
     int y = 0;
 
@@ -14,7 +23,7 @@ board::board(QWidget *parent) : QWidget(parent), ui(new Ui::board)
         for (int c = 0; c < 4; c++)
         {
             spaces[r][c] = new Circles(this);
-            spaces[r][c]->setGeometry(x,y,64,64);
+            spaces[r][c]->setGeometry(x,50+y,64,64);
             x += 65;
         }
         y += 65;
@@ -26,7 +35,7 @@ board::board(QWidget *parent) : QWidget(parent), ui(new Ui::board)
         for(int c = 0; c < 1; c++)
         {
             colors[r][c] = new Circles(this);
-            colors[r][c] -> setGeometry(colorX,colorY, 64, 64);
+            colors[r][c] -> setGeometry(colorX,50+colorY, 64, 64);
             colorX+=65;
         }
         colorY+=65;
@@ -35,6 +44,63 @@ board::board(QWidget *parent) : QWidget(parent), ui(new Ui::board)
     setColors();
 
 
+    for( int i = 0 ; i < 10 ; i++ )
+    {
+        for( int j = 0 ; j < 4 ; j++ )
+        {
+            circlesFeedback[j][i] = new CirclesFeedback(this);
+            switch(j)
+            {
+            case 0:
+                circlesFeedback[j][i]->setGeometry(280 + 5,50+ (i*65)+10,20,20);
+                break;
+            case 1:
+                circlesFeedback[j][i]->setGeometry(280 + 5,50+ (i*65)+35,20,20);
+                break;
+            case 2:
+                circlesFeedback[j][i]->setGeometry(280 + 30,50+ (i*65)+10,20,20);
+                break;
+            case 3:
+                circlesFeedback[j][i]->setGeometry(280 + 30,50+ (i*65)+35,20,20);
+            }
+        }
+    }
+
+
+}
+
+board::~board()
+{
+    delete ui;
+}
+
+void board::new_game()
+{
+    //reset game
+    QMessageBox::about(this, tr("Test"),
+                tr("Clicked New Game"));
+}
+
+void board::exit()
+{
+    board::close();
+}
+
+void board::open_Instructions()
+{
+    QMessageBox::about(this, tr("Instructions Menu"),
+                tr("Instructions.......when project is done..."));
+}
+
+void board::about()
+{
+    QMessageBox::about(this, tr("About Menu"),
+            tr("Mastermind Game\t\nMade us c++ and Qt \nBy: \n  Alison Cerny\n  Thomas Everson\n  Jaime Minan"));
+}
+
+void board::aboutQt()
+{
+    QMessageBox::aboutQt(this);
 }
 
 void board::setColors()
@@ -55,7 +121,18 @@ void board::resetBoard()
 
 }
 
-board::~board()
+
+void board::on_submitButton_clicked()
 {
-    delete ui;
+    //HOW: right click on the button it the Qt Designer ui then clicked "Go to slot"
+    //add button function
+    QMessageBox::about(this, tr("Test"),
+                tr("Clicked Submit"));
+}
+
+void board::on_clearButton_clicked()
+{
+    //add button function
+    QMessageBox::about(this, tr("Test"),
+                tr("Clicked Clear"));
 }

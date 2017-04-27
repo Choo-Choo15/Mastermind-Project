@@ -24,21 +24,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     patterngenerator.cpp \
     playerguess.cpp \
     playerguessfeedback.cpp \
     game.cpp \
     board.cpp \
-    circles.cpp
+    circles.cpp \
+    circlesfeedback.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     playerguess.h \
     playerguessfeedback.h \
     patterngenerator.h \
     game.h \
     board.h \
-    circles.h
+    circles.h \
+    circlesfeedback.h
 
-FORMS    += mainwindow.ui \
+FORMS    += \
     board.ui
