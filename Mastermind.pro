@@ -39,7 +39,8 @@ HEADERS  += \
     game.h \
     board.h \
     circles.h \
-    circlesfeedback.h
+    circlesfeedback.h \
+    ui_board.h
 
 FORMS    += \
     board.ui
