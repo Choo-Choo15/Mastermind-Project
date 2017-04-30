@@ -10,7 +10,7 @@ class Circles : public QWidget
 
 private:
     int row, col;
-    bool empty;
+    bool checked;
     char color;
     QPainter painter;
 

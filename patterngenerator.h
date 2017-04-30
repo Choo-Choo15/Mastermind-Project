@@ -1,14 +1,15 @@
 #ifndef PATTERNGENERATOR_H
 #define PATTERNGENERATOR_H
-
+#include <string>
 
 class PatternGenerator
 {
 private:
-    char pattern[5];
+    std::string pattern;
+    std::string choices = "RNPGYOLB";
 public:
     PatternGenerator();
-    char getPattern();//needs a pointer
+    std::string getPattern();//needs a pointer
     void setPattern();
 };
 

@@ -6,12 +6,13 @@
 class PlayerGuess
 {
 private:
-    char guess[5];
+    std::string guess;
+    std::string answer;
 public:
     PlayerGuess();
     PlayerGuessFeedBack FB;
-    char getGuess();//needs to be a pointer
-    void setGuess();
+    void setGuess(std::string inGuess);
+    std::string getGuess();
     bool checkPattern();
 };
 #endif // PLAYERGUESS_H

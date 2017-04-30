@@ -6,7 +6,7 @@
 
 Circles::Circles(QWidget *pParent) : QWidget(pParent)
 {
-    color = 'W';
+    color = 0;
 }
 
 char Circles::getColor()
@@ -38,7 +38,7 @@ void Circles::paintEvent(QPaintEvent *) {
         painter.drawEllipse(QPoint(width()/2, height()/2),25,25);
         break;
     case 'P':
-        painter.setBrush(QBrush(QColor("magenta")));
+        painter.setBrush(QBrush(QColor("magenta")));//cant figure out how to show purple like button!
         painter.setRenderHint(QPainter::Antialiasing);
         painter.drawEllipse(QPoint(width()/2, height()/2),25,25);
         break;
@@ -53,12 +53,12 @@ void Circles::paintEvent(QPaintEvent *) {
         painter.drawEllipse(QPoint(width()/2, height()/2),25,25);
         break;
     case 'O':
-        painter.setBrush(QBrush(QColor("darkRed")));
+        painter.setBrush(QBrush(QColor("darkRed")));//cant figure out how to show orange like button!
         painter.setRenderHint(QPainter::Antialiasing);
         painter.drawEllipse(QPoint(width()/2, height()/2),25,25);
         break;
-    case 'L':
-        painter.setBrush(QBrush(QColor("lightGray")));
+    case 'W':
+        painter.setBrush(QBrush(QColor("white")));
         painter.setRenderHint(QPainter::Antialiasing);
         painter.drawEllipse(QPoint(width()/2, height()/2),25,25);
         break;
@@ -68,6 +68,7 @@ void Circles::paintEvent(QPaintEvent *) {
         painter.drawEllipse(QPoint(width()/2, height()/2),25,25);
         break;
     default:
+        painter.setBrush(QBrush(QColor("lightGray")));
         painter.setRenderHint(QPainter::Antialiasing);
         painter.drawEllipse(QPoint(width()/2, height()/2),25,25);
         break;
