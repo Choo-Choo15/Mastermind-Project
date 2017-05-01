@@ -23,6 +23,8 @@ public:
     char getColor();
     void setColor(char Color);
     //~Circles();
+    void setChecked();
+    bool getChecked();
 
 signals:
 

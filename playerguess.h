@@ -13,6 +13,6 @@ public:
     PlayerGuessFeedBack FB;
     void setGuess(std::string inGuess);
     std::string getGuess();
-    bool checkPattern();
+    void checkPattern();
 };
 #endif // PLAYERGUESS_H

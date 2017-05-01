@@ -7,6 +7,7 @@
 Circles::Circles(QWidget *pParent) : QWidget(pParent)
 {
     color = 0;
+    checked = false;
 }
 
 char Circles::getColor()
@@ -17,6 +18,16 @@ char Circles::getColor()
 void Circles::setColor(char Color)
 {
     color = Color;
+}
+
+void Circles::setChecked()
+{
+    checked = true;
+}
+
+bool Circles::getChecked()
+{
+    return checked;
 }
 
 //Circles::~Circles()

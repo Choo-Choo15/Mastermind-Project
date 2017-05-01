@@ -65,7 +65,6 @@ void board::resetBoard()
         for (int c = 0; c < 4; c++)
         {
             spaces[r][c] = new Circles(this);
-            spaces[r][c]->setColor(0); //added to try and stop the memory access problem.... run through debugger add colors until first 4 rows full you will see.
             spaces[r][c]->setGeometry(x,50+y,64,64);
             x += 65;
         }
@@ -116,21 +115,47 @@ void board::getCurrentSpace()
             break;
         j=0;
     }
-    row = i;
-    column = j;
+    row = i; //Row and column are "global" varaibles to allow the other methods to know what the most recentlty added space was
+    column = j; //I dont really know how else to do it so maybe someone else has a good idea...
 }
-
-
 
 void board::on_submitButton_clicked()
-{
-    //HOW: right click on the button it the Qt Designer ui then clicked "Go to slot"
-    //add button function
-    QMessageBox::about(this, tr("Test"),
-                tr("Clicked Submit"));
+{//it works!!!
+    std::string g = "    ";
+    for(int i = 0; i < 4; i++)
+    {
+        if(spaces[row][i]->getColor() == 0)
+        {
+            QMessageBox::about(this, tr("Cannot Submit"),
+                        tr("Cannot submit until all values have been filled in for this row."));
+            break;
+        }
+        else
+        {
+            g[i] = spaces[row][i]->getColor();
+        }
+    }
+    if(g.find('0') != std::string::npos)
+    {
+        g = "    ";
+    }
+    else
+    {
+        guess.setGuess(g);
+        guess.checkPattern(); //not positive this method works
+        setChecked(row);
+    }
 }
 
-void board::on_clearButton_clicked()
+void board::setChecked(int inRow)
+{
+    for(int i = 0; i < 4; i++)
+    {
+        spaces[inRow][i]->setChecked();
+    }
+}
+
+void board::on_clearButton_clicked()//this method will need something to stop users from undo ing an already checked move!
 {
     if(spaces[0][0]->getColor()==0)
     {
@@ -167,56 +192,120 @@ void board::on_clearButton_clicked()
 
 void board::on_blueButton_clicked()
 {
-    getCurrentSpace();
-    spaces[row][column]->setColor('N');
-    repaint();
+    if(!spaces[row][3]->getChecked() && spaces[row][3]->getColor() != 0)
+    {
+        QMessageBox::about(this,tr("Invalid Move"), tr("Cannot add another value until"
+                                                       " you have submitted this full row."));
+    }
+    else
+    {
+        getCurrentSpace();
+        spaces[row][column]->setColor('N');
+        repaint();
+    }
 }
 
 void board::on_redButton_clicked()
 {
-    getCurrentSpace();
-    spaces[row][column]->setColor('R');
-    repaint();
+    if(!spaces[row][3]->getChecked() && spaces[row][3]->getColor() != 0)
+    {
+        QMessageBox::about(this,tr("Invalid Move"), tr("Cannot add another value until"
+                                                       " you have submitted this full row."));
+    }
+    else
+    {
+        getCurrentSpace();
+        spaces[row][column]->setColor('R');
+        repaint();
+    }
 }
 
 void board::on_yellowButton_clicked()
 {
-    getCurrentSpace();
-    spaces[row][column]->setColor('Y');
-    repaint();
+    if(!spaces[row][3]->getChecked() && spaces[row][3]->getColor() != 0)
+    {
+        QMessageBox::about(this,tr("Invalid Move"), tr("Cannot add another value until"
+                                                       " you have submitted this full row."));
+    }
+    else
+    {
+        getCurrentSpace();
+        spaces[row][column]->setColor('Y');
+        repaint();
+    }
 }
 
 void board::on_greenButton_clicked()
 {
-    getCurrentSpace();
-    spaces[row][column]->setColor('G');
-    repaint();
+    if(!spaces[row][3]->getChecked() && spaces[row][3]->getColor() != 0)
+    {
+        QMessageBox::about(this,tr("Invalid Move"), tr("Cannot add another value until"
+                                                       " you have submitted this full row."));
+    }
+    else
+    {
+        getCurrentSpace();
+        spaces[row][column]->setColor('G');
+        repaint();
+    }
 }
 
 void board::on_purpleButton_clicked()
 {
-    getCurrentSpace();
-    spaces[row][column]->setColor('P'); //shows up as pink.... see circles.cpp
-    repaint();
+    if(!spaces[row][3]->getChecked() && spaces[row][3]->getColor() != 0)
+    {
+        QMessageBox::about(this,tr("Invalid Move"), tr("Cannot add another value until"
+                                                       " you have submitted this full row."));
+    }
+    else
+    {
+        getCurrentSpace();
+        spaces[row][column]->setColor('P'); //shows magenta... not sure how to show purple
+        repaint();
+    }
 }
 
 void board::on_orangeButton_clicked()
 {
-    getCurrentSpace();
-    spaces[row][column]->setColor('O');//shows up as darkRed.... see circles.cpp
-    repaint();
+    if(!spaces[row][3]->getChecked() && spaces[row][3]->getColor() != 0)
+    {
+        QMessageBox::about(this,tr("Invalid Move"), tr("Cannot add another value until"
+                                                       " you have submitted this full row."));
+    }
+    else
+    {
+        getCurrentSpace();
+        spaces[row][column]->setColor('O'); //shows darkRed... not sure how to show orange
+        repaint();
+    }
 }
 
 void board::on_whiteButton_clicked()
 {
-    getCurrentSpace();
-    spaces[row][column]->setColor('W');
-    repaint();
+    if(!spaces[row][3]->getChecked() && spaces[row][3]->getColor() != 0)
+    {
+        QMessageBox::about(this,tr("Invalid Move"), tr("Cannot add another value until"
+                                                       " you have submitted this full row."));
+    }
+    else
+    {
+        getCurrentSpace();
+        spaces[row][column]->setColor('W');
+        repaint();
+    }
 }
 
 void board::on_blackButton_clicked()
 {
-    getCurrentSpace();
-    spaces[row][column]->setColor('B');
-    repaint();
+    if(!spaces[row][3]->getChecked() && spaces[row][3]->getColor() != 0)
+    {
+        QMessageBox::about(this,tr("Invalid Move"), tr("Cannot add another value until"
+                                                       " you have submitted this full row."));
+    }
+    else
+    {
+        getCurrentSpace();
+        spaces[row][column]->setColor('B');
+        repaint();
+    }
 }

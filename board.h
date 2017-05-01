@@ -5,6 +5,7 @@
 #include "circles.h"
 #include "circlesfeedback.h"
 #include "patterngenerator.h"
+#include "playerguess.h"
 
 namespace Ui {
 class board;
@@ -17,12 +18,12 @@ class board : public QMainWindow
 public:
     explicit board(QWidget *parent = 0);
     PatternGenerator pattern;
-    Circles *spaces[4][10];
-    //Circles *colors[8][1];
+    PlayerGuess guess;
+    Circles *spaces[10][4];
     CirclesFeedback *circlesFeedback[4][10];
-    //void setColors();
     void resetBoard();
     void getCurrentSpace();
+    void setChecked(int inRow);
     ~board();
 
 private:
