@@ -7,7 +7,6 @@ private:
     int blackPeg;
 public:
     PlayerGuessFeedBack();
-    //QString getPlayerGuess(playerguess);//might not be right
     int getWhitePeg();
     int getBlackPeg();
     void setWhitePeg();

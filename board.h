@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include "circles.h"
 #include "circlesfeedback.h"
-#include "patterngenerator.h"
 #include "playerguess.h"
 
 namespace Ui {
@@ -17,10 +16,9 @@ class board : public QMainWindow
 
 public:
     explicit board(QWidget *parent = 0);
-    PatternGenerator pattern;
     PlayerGuess guess;
     Circles *spaces[10][4];
-    CirclesFeedback *circlesFeedback[4][10];
+    CirclesFeedback *circlesFeedback[10][4];
     void resetBoard();
     void getCurrentSpace();
     void setChecked(int inRow);

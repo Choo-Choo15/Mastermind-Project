@@ -9,11 +9,13 @@ class CirclesFeedback : public QWidget
 public:
     explicit CirclesFeedback(QWidget *parent = 0);
     void paintEvent(QPaintEvent *);
-
+    char getColor();
+    void setColor(char Color);
     //void blackPaint();
     //void whitePaint();
 
 private:
+    char color;
     //bool black;
     //bool white;
 

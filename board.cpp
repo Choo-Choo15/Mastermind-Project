@@ -17,9 +17,8 @@ board::board(QWidget *parent) :
     connect(ui->actionInstructions,SIGNAL(triggered()),this,SLOT(open_Instructions()));
     connect(ui->actionAbout,SIGNAL(triggered()),this,SLOT(about()));
     connect(ui->actionAbout_Qt,SIGNAL(triggered()),this,SLOT(aboutQt()));
-    new_game();//this and commented section do same thing. Intial game works but new game breaks it.
-    //    resetBoard();//moved code to reset board so that we can call new game.
-    //    pattern.setPattern();
+    resetBoard();
+    //new_game();
 }
 
 board::~board()
@@ -27,10 +26,11 @@ board::~board()
     delete ui;
 }
 
-void board::new_game()//does not work how it is supposed to. It just breaks everything...
+void board::new_game()
 {
-  resetBoard();
-  pattern.setPattern();
+    qApp->quit();
+    QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
+    //resetBoard();
 }
 
 void board::exit()
@@ -72,30 +72,29 @@ void board::resetBoard()
     }
 
     for( int i = 0 ; i < 10 ; i++ )
-    {
-        for( int j = 0 ; j < 4 ; j++ )
         {
-            circlesFeedback[j][i] = new CirclesFeedback(this);
-            switch(j)
+            for( int j = 0 ; j < 4 ; j++ )
             {
-            case 0:
-                circlesFeedback[j][i]->setGeometry(280 + 5,50+ (i*65)+10,20,20);
-                break;
-            case 1:
-                circlesFeedback[j][i]->setGeometry(280 + 5,50+ (i*65)+35,20,20);
-                break;
-            case 2:
-                circlesFeedback[j][i]->setGeometry(280 + 30,50+ (i*65)+10,20,20);
-                break;
-            case 3:
-                circlesFeedback[j][i]->setGeometry(280 + 30,50+ (i*65)+35,20,20);
+                circlesFeedback[i][j] = new CirclesFeedback(this);
+                switch(j)
+                {
+                case 0:
+                    circlesFeedback[i][j]->setGeometry(280 + 5,50+ (i*65)+35,20,20);
+                    break;
+                case 1:
+                    circlesFeedback[i][j]->setGeometry(280 + 5,50+ (i*65)+10,20,20);
+                    break;
+                case 2:
+                    circlesFeedback[i][j]->setGeometry(280 + 30,50+ (i*65)+35,20,20);
+                    break;
+                case 3:
+                    circlesFeedback[i][j]->setGeometry(280 + 30,50+ (i*65)+10,20,20);
+                }
             }
         }
-    }
 
     row = 0;
     column = 0;
-    repaint();
 }
 
 void board::getCurrentSpace()
@@ -120,7 +119,7 @@ void board::getCurrentSpace()
 }
 
 void board::on_submitButton_clicked()
-{//it works!!!
+{
     std::string g = "    ";
     for(int i = 0; i < 4; i++)
     {
@@ -142,7 +141,7 @@ void board::on_submitButton_clicked()
     else
     {
         guess.setGuess(g);
-        guess.checkPattern(); //not positive this method works
+        guess.checkPattern(circlesFeedback);
         setChecked(row);
     }
 }
@@ -155,9 +154,9 @@ void board::setChecked(int inRow)
     }
 }
 
-void board::on_clearButton_clicked()//this method will need something to stop users from undo ing an already checked move!
+void board::on_clearButton_clicked()
 {
-    if(spaces[0][0]->getColor()==0)
+    if(spaces[row][0]->getColor()==0)
     {
         QMessageBox::about(this,tr("Undo"), tr("Nothing to Undo"));
     }

@@ -30,10 +30,10 @@ bool Circles::getChecked()
     return checked;
 }
 
-//Circles::~Circles()
-//{
-//    delete color;
-//} would like to add but throws erros
+/*Circles::~Circles()
+{
+    delete Circles;
+}*/ //would like to add but throws erros
 
 void Circles::paintEvent(QPaintEvent *) {
     QPainter painter(this);
@@ -49,7 +49,7 @@ void Circles::paintEvent(QPaintEvent *) {
         painter.drawEllipse(QPoint(width()/2, height()/2),25,25);
         break;
     case 'P':
-        painter.setBrush(QBrush(QColor("magenta")));//cant figure out how to show purple like button!
+        painter.setBrush(QBrush(QColor(170,0,255,255)));//cant figure out how to show purple like button!
         painter.setRenderHint(QPainter::Antialiasing);
         painter.drawEllipse(QPoint(width()/2, height()/2),25,25);
         break;
@@ -64,7 +64,7 @@ void Circles::paintEvent(QPaintEvent *) {
         painter.drawEllipse(QPoint(width()/2, height()/2),25,25);
         break;
     case 'O':
-        painter.setBrush(QBrush(QColor("darkRed")));//cant figure out how to show orange like button!
+        painter.setBrush(QBrush(QColor(255,170,0,255)));//cant figure out how to show orange like button!
         painter.setRenderHint(QPainter::Antialiasing);
         painter.drawEllipse(QPoint(width()/2, height()/2),25,25);
         break;

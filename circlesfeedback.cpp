@@ -5,15 +5,39 @@
 
 CirclesFeedback::CirclesFeedback(QWidget *parent) : QWidget(parent)
 {
-
+    color = 0;
 }
 
 void CirclesFeedback::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
-    painter.setBrush(QBrush(QColor("lightGray")));
-    painter.setRenderHint(QPainter::Antialiasing);
-    painter.drawEllipse(QPoint(width()/2, height()/2),10,10);
+    switch (color) {
+
+    case 'W':
+        painter.setBrush(QBrush(QColor("white")));
+        painter.setRenderHint(QPainter::Antialiasing);
+        painter.drawEllipse(QPoint(width()/2, height()/2),10,10);
+        break;
+    case 'B':
+        painter.setBrush(QBrush(QColor("black")));
+        painter.setRenderHint(QPainter::Antialiasing);
+        painter.drawEllipse(QPoint(width()/2, height()/2),10,10);
+        break;
+    default:
+        painter.setBrush(QBrush(QColor("lightGray")));
+        painter.setRenderHint(QPainter::Antialiasing);
+        painter.drawEllipse(QPoint(width()/2, height()/2),10,10);
+    }
+}
+
+char CirclesFeedback::getColor()
+{
+    return color;
+}
+
+void CirclesFeedback::setColor(char Color)
+{
+    color = Color;
 }
 
 /*

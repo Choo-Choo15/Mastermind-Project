@@ -6,7 +6,7 @@ class PatternGenerator
 {
 private:
     std::string pattern;
-    std::string choices = "RNPGYOLB";
+    std::string choices = "RNPGYOWB";
 public:
     PatternGenerator();
     std::string getPattern();//needs a pointer
