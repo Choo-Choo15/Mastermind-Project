@@ -18,7 +18,6 @@ board::board(QWidget *parent) :
     connect(ui->actionAbout,SIGNAL(triggered()),this,SLOT(about()));
     connect(ui->actionAbout_Qt,SIGNAL(triggered()),this,SLOT(aboutQt()));
     resetBoard();
-    //new_game();
 }
 
 board::~board()
@@ -28,9 +27,9 @@ board::~board()
 
 void board::new_game()
 {
+    numOfGuesses = 0;
     qApp->quit();
     QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
-    //resetBoard();
 }
 
 void board::exit()
@@ -114,8 +113,8 @@ void board::getCurrentSpace()
             break;
         j=0;
     }
-    row = i; //Row and column are "global" varaibles to allow the other methods to know what the most recentlty added space was
-    column = j; //I dont really know how else to do it so maybe someone else has a good idea...
+    row = i;
+    column = j;
 }
 
 void board::on_submitButton_clicked()
@@ -141,8 +140,11 @@ void board::on_submitButton_clicked()
     else
     {
         guess.setGuess(g);
-        guess.checkPattern(circlesFeedback);
+        guess.checkPattern(circlesFeedback, numOfGuesses);
         setChecked(row);
+        row+=1;
+        numOfGuesses+=1;
+        repaint();
     }
 }
 
@@ -259,7 +261,7 @@ void board::on_purpleButton_clicked()
     else
     {
         getCurrentSpace();
-        spaces[row][column]->setColor('P'); //shows magenta... not sure how to show purple
+        spaces[row][column]->setColor('P');
         repaint();
     }
 }
@@ -274,7 +276,7 @@ void board::on_orangeButton_clicked()
     else
     {
         getCurrentSpace();
-        spaces[row][column]->setColor('O'); //shows darkRed... not sure how to show orange
+        spaces[row][column]->setColor('O');
         repaint();
     }
 }

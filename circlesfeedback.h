@@ -11,13 +11,9 @@ public:
     void paintEvent(QPaintEvent *);
     char getColor();
     void setColor(char Color);
-    //void blackPaint();
-    //void whitePaint();
 
 private:
     char color;
-    //bool black;
-    //bool white;
 
 signals:
 

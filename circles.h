@@ -22,7 +22,6 @@ public:
     explicit Circles(QWidget *parent = 0);
     char getColor();
     void setColor(char Color);
-    //~Circles();
     void setChecked();
     bool getChecked();
 

@@ -26,8 +26,9 @@ public:
 
 private:
     Ui::board *ui;
-    int row = 0; //i tried to make a pointer that would return the memory location of the specific space but I gave up.
+    int row = 0;
     int column = 0;
+    int numOfGuesses = 0;
 
 private slots:
     void new_game();

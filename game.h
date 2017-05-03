@@ -12,7 +12,6 @@ public:
     PlayerGuess playerGuess;
     PatternGenerator patternGenerator;
     void runGame();
-    //QString gameOutCome();
 
 };
 

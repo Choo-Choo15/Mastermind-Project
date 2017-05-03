@@ -26,7 +26,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
     patterngenerator.cpp \
     playerguess.cpp \
-    playerguessfeedback.cpp \
     game.cpp \
     board.cpp \
     circles.cpp \
@@ -34,7 +33,6 @@ SOURCES += main.cpp\
 
 HEADERS  += \
     playerguess.h \
-    playerguessfeedback.h \
     patterngenerator.h \
     game.h \
     board.h \
